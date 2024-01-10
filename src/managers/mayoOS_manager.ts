@@ -1,11 +1,13 @@
 import PrinterManager from "./printerManager";
+import { UsersManager } from "./userManager";
 
 /**
  * Classe manager de l'os. Gère le lancement et l'execution des commandes.
  * @alpha 0.0.1
  */
 class MayoOSManager {
-    private Printer = new PrinterManager()
+    private printer: PrinterManager = new PrinterManager();
+    private users: null | UsersManager = null;
 
     constructor () {
         this.start();
@@ -15,7 +17,7 @@ class MayoOSManager {
      * Methode start, démarre les processus de démarage.
      */
     private start():void {
-        this.Printer.message("Demarage en cours...", false);
+        this.printer.message("Demarage en cours...", false);
 
     }
 };
