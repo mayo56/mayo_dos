@@ -25,6 +25,7 @@ class UsersManager {
                 ids: ["0"]
             }
             writeFileSync(this.path + "/config.json", JSON.stringify(defaultConfigFile));
+            mkdirSync(`${this.path}/home/0`);
         };
         this.path += "/home";
         
@@ -35,16 +36,19 @@ class UsersManager {
 
     public login(username:string, password: string) {
         if (!this.users?.users.includes(username)) {
-            return {error: true};
+            return false;
+        } else {
+            const userInfo = this.users.password[this.users.users.indexOf(username)];
+            return new CrypterManager(userInfo[1], userInfo[0]).verify(password);
         };
-    }
+    };
 };
 
 /**
  * Class qui gère l'utilisateur connecté. Donne les privillèges selon l'utilisateur
  */
 class UserManager {
-
+    
 }
 
 
