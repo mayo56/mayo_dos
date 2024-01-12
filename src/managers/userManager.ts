@@ -19,15 +19,19 @@ class UsersManager {
         // vérification du fichier /home
         if (!readdirSync(this.path).includes("home")) {
             mkdirSync(this.path + "/home");
-            const defaultConfigFile: config = {
-                users: ["admin"],
-                password: [["admin", 0]],
-                ids: ["0"]
-            }
-            writeFileSync(this.path + "/config.json", JSON.stringify(defaultConfigFile));
             mkdirSync(`${this.path}/home/0`);
         };
         this.path += "/home";
+
+        // Si pas de fichier config.json
+        if (!readdirSync(`${this.path}`).includes("config.json")) {
+            const defaultConfigFile: config = {
+                users: ["admin"],
+                password: [new CrypterManager().encrypte("admin")],
+                ids: ["0"]
+            };
+            writeFileSync(this.path + "/config.json", JSON.stringify(defaultConfigFile));
+        };
         
         // Chargement du fichier config
         let config: config = require(`${this.path}/config.json`);

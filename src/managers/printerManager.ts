@@ -5,6 +5,9 @@ type colors = "white"
  * @alpha 0.0.1
  */
 class PrinterManager {
+
+    private colors = require("../assets/colors.json")
+
     /**
      * Methode permettant d'afficher du texte normalement ou formaté.
      * @param format Si le texte transmit doit être formaté pour des couleurs
@@ -25,7 +28,11 @@ class PrinterManager {
      * @param text Le texte à formater
      */
     private format(text:string): string {
-        return ""
+        for (const color in this.colors) {
+            text = text.replace(new RegExp(`\\[${color}\\]`, "g"), `\x1b[${this.colors[color]}m`);
+            text = text.replace(new RegExp(`\\[\/${color}\\]`, "g"), `\x1b[0m`);
+        };
+        return text;
     }
 };
 

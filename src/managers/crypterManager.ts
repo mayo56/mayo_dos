@@ -31,12 +31,15 @@ class CrypterManager {
     public encrypte(input:string): [string, number] {
         let encryptedPassword = "";
         this.key = Math.floor(Math.random() * this.char.length);
+
+        while (this.key === 0) {
+            this.key = Math.floor(Math.random() * this.char.length);
+        };
         
         for (const lettre of input) {
             const position = this.char.indexOf(lettre); // position de la lettre
             // position + clé de cryptage
             if (position + this.key > this.char.length) {
-                console.log((position + this.key) - this.char.length, this.char.length)
                 encryptedPassword += this.char[(position + this.key) - this.char.length];
             } else {
                 encryptedPassword += this.char[position + this.key];

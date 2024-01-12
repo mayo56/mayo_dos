@@ -1,11 +1,10 @@
 import PrinterManager from "./printerManager";
 import { UsersManager } from "./userManager";
-import readline from "readline";
-import process from "node:process"
+import prompt from "prompt-sync";
 
 /**
  * Classe manager de l'os. Gère le lancement et l'execution des commandes.
- * @alpha 0.0.1
+ * @alpha 0.0.2
  */
 class MayoOSManager {
     private printer: PrinterManager = new PrinterManager();
@@ -19,28 +18,22 @@ class MayoOSManager {
      * Methode start, démarre les processus de démarage.
      */
     private start(): void {
-        this.printer.message("Demarage en cours...", false);
+        this.printer.message("Demarage en cours...\n", false);
         this.users = new UsersManager();
 
         let connected = false;
         while (!connected) {
-            let inputInfo = { username: "", password: "" };
-
-            var rl = readline.createInterface({
-                input: process.stdin,
-                output: process.stdout
-            });
-
-            rl.question("What do you think of Node.js? ", (answer:string) => {
-                console.log("Thank you for your valuable feedback:", answer);
-                rl.close();
-            });
+            console.log()
+            let inputInfo = {
+                username: prompt({})({"ask": "Username: "}).trim(),
+                password: prompt({})({"ask": "Password: "}).trim()
+            };
 
             const response = this.users.login(inputInfo.username, inputInfo.password);
             if (response) {
                 connected = response;
             } else {
-                this.printer.message("Identifiant ou mot de passse incorrect.");
+                this.printer.message("[cR]Identifiant ou mot de passse incorrect.[/cR]", true);
             };
         };
     };
