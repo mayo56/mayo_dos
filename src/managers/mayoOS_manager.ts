@@ -1,6 +1,7 @@
 import PrinterManager from "./printerManager";
 import { UsersManager } from "./userManager";
 import prompt from "prompt-sync";
+import PromptManager from "./promptManager";
 
 /**
  * Classe manager de l'os. Gère le lancement et l'execution des commandes.
@@ -23,10 +24,9 @@ class MayoOSManager {
 
         let connected = false;
         while (!connected) {
-            console.log()
             let inputInfo = {
                 username: prompt({})({"ask": "Username: "}).trim(),
-                password: prompt({})({"ask": "Password: "}).trim()
+                password: prompt({})({"ask": "Password: "}).trim(),
             };
 
             const response = this.users.login(inputInfo.username, inputInfo.password);
@@ -36,6 +36,7 @@ class MayoOSManager {
                 this.printer.message("[cR]Identifiant ou mot de passse incorrect.[/cR]", true);
             };
         };
+        new PromptManager("home\\0\\");
     };
 };
 
