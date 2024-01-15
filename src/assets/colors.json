@@ -1,10 +1,16 @@
 {
-    "cBla": "30",
-    "cR": "31",
-    "cGre": "32",
-    "cY": "33",
-    "cBlu": "34",
-    "cM": "35",
-    "cW": "37",
-    "cGra": "90"
+    "info": [
+        "c[color] => couleur [color]",
+        "Black, Red, Green, Yellow, Blue, Magenta, White, Gray"
+    ],
+    "colors": {
+        "cBla": "30",
+        "cR": "31",
+        "cGre": "32",
+        "cY": "33",
+        "cBlu": "34",
+        "cM": "35",
+        "cW": "37",
+        "cGra": "90"
+    }
 }

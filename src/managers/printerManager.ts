@@ -6,7 +6,7 @@ type colors = "white"
  */
 class PrinterManager {
 
-    private colors = require("../assets/colors.json")
+    private colors = require("../assets/colors.json").colors
 
     /**
      * Methode permettant d'afficher du texte normalement ou formaté.

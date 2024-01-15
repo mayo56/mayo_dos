@@ -1,20 +1,20 @@
-import PrinterManager from "./printerManager";
 import prompt from "prompt-sync";
+import CommandsManager from "./commandsManager";
 
 class PromptManager {
 
     public cancel = false;
-    private printer = new PrinterManager();
 
-    constructor (private path: string) {
+
+    constructor(private path: string) {
         while (!this.cancel) {
-            const commande = prompt()({"ask": `${this.path}> `});
-            this.execute();
+            const commande = prompt()({ "ask": `${this.path}> ` }).trim().split(/ +/g);
+            this.execute(commande);
         };
     };
 
-    private execute() {
-        this.printer.message("[cY][En cours de construction][/cY]", true);
+    private execute(commande: string[]) {
+        this.cancel = new CommandsManager(commande, this.path).execute() || false;
     };
 };
 
