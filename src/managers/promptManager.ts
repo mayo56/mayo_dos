@@ -4,6 +4,7 @@ import CommandsManager from "./commandsManager";
 export default class PromptManager {
 
     public cancel = false;
+    private commandes = new CommandsManager(this.path); // On charge les commandes
 
     constructor(private path: string) {
         // Boucle d'execution de commande
@@ -14,8 +15,7 @@ export default class PromptManager {
     };
 
     private execute(commande: string[]) {
-        const prompt = new CommandsManager(commande, this.path)
-        this.cancel = prompt.execute() || false; // Execute la commande (sortie si erreur ou demande)
-        this.path = prompt.path; // Récupère le path si jamais il change
+        this.cancel = this.commandes.execute(commande) || false; // Execute la commande (sortie si erreur ou demande)
+        this.path = this.commandes.path; // Récupère le path si jamais il change
     };
 };
