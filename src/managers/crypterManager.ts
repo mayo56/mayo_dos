@@ -1,9 +1,9 @@
+
 /**
  * crypter pour les password
  * 
  */
-
-class CrypterManager {
+export default class CrypterManager {
     private char: string = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ0123456789!:;,.?&()[]{}=+@^";
 
     constructor (private key?: number, private cryptedPassword?:string) {};
@@ -48,5 +48,3 @@ class CrypterManager {
         return [encryptedPassword, this.key];
     };
 };
-
-export default CrypterManager;

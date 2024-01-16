@@ -4,7 +4,7 @@ type colors = "white"
  * Classe d'impression sur l'écran, affiche se qu'on lui dit avec la couleur demandé.
  * @alpha 0.0.1
  */
-class PrinterManager {
+export default class PrinterManager {
 
     private colors = require("../assets/colors.json").colors
 
@@ -35,5 +35,3 @@ class PrinterManager {
         return text;
     }
 };
-
-export default PrinterManager;

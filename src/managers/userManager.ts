@@ -11,7 +11,7 @@ type config = {
  * Class qui gère tous les utilisateurs. Est appelé quand l'os démarre
  * Il gère les passwords et identifiants.
  */
-class UsersManager {
+export class UsersManager {
     private path = `${__dirname}/..`;
     private users: null | config = null
 
@@ -54,9 +54,3 @@ class UsersManager {
 class UserManager {
     
 }
-
-
-export {
-    UserManager,
-    UsersManager
-};

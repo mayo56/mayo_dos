@@ -5,9 +5,9 @@ import PromptManager from "./promptManager";
 
 /**
  * Classe manager de l'os. Gère le lancement et l'execution des commandes.
- * @alpha 0.0.2
+ * @alpha 0.0.3
  */
-class MayoOSManager {
+export default class MayoOSManager {
     private printer: PrinterManager = new PrinterManager();
     private users: null | UsersManager = null;
 
@@ -26,7 +26,7 @@ class MayoOSManager {
         while (!connected) {
             let inputInfo = {
                 username: prompt({})({"ask": "Username: "}).trim(),
-                password: prompt({})({"ask": "Password: "}).trim(),
+                password: prompt()({"ask": "Password: ", echo:"*"})
             };
 
             const response = this.users.login(inputInfo.username, inputInfo.password);
@@ -39,5 +39,3 @@ class MayoOSManager {
         new PromptManager("home\\0\\");
     };
 };
-
-export default MayoOSManager;
