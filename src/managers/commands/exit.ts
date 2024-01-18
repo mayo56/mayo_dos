@@ -1,6 +1,5 @@
 import { commandReturn, commands } from "../../assets/types";
 import PrinterManager from "../printerManager";
-import PrinterManager from "../printerManager";
 
 export default {
     name: "shutdown",
