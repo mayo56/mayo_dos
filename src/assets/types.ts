@@ -20,3 +20,4 @@ export type commandReturn = {
     cancel: boolean
 };
 
+export type manageCommandsType = [string, string[], ((commandsArgs: string[], path: string) => commandReturn)]

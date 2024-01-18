@@ -23,6 +23,10 @@ export default class PrinterManager {
         console.log(text);
     }
 
+    public clear():void {
+        console.clear();
+    };
+
     /**
      * Format le texte avec les couleurs
      * @param text Le texte à formater

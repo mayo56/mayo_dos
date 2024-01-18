@@ -5,7 +5,7 @@ import PromptManager from "./promptManager";
 
 /**
  * Classe manager de l'os. Gère le lancement et l'execution des commandes.
- * @alpha 0.0.3
+ * @alpha 0.0.4
  */
 export default class MayoOSManager {
     private printer: PrinterManager = new PrinterManager();
@@ -19,6 +19,7 @@ export default class MayoOSManager {
      * Methode start, démarre les processus de démarage.
      */
     private start(): void {
+        this.printer.clear(); // efface la console
         this.printer.message("Demarage en cours...\n", false);
         this.users = new UsersManager();
 
