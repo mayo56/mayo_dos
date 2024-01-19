@@ -6,14 +6,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node src/main.ts",
-    "build": "tsc -b \"buil\""
+    "build": "tsc -b",
+    "clean": "rm -rf build && npm run build"
   },
-  "keywords": ["dos", "mayo"],
+  "keywords": [
+    "dos",
+    "mayo"
+  ],
   "author": "mayo56",
   "license": "ISC",
   "dependencies": {
     "prompt-sync": "^4.2.0",
-    "readline": "^1.3.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },
