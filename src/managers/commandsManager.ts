@@ -10,7 +10,7 @@ export default class CommandsManager {
 
     private commandsList: manageCommandsType[] = [];
 
-    constructor(public path: string) {
+    constructor(public path: string[]) {
         const fileList = readdirSync(`${__dirname}/commands`).filter(file => file.endsWith(".ts"));
         for (const file of fileList) {
             const command = require(`${__dirname}/commands/${file}`).default as commands;

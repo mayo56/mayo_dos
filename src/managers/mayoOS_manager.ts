@@ -5,7 +5,7 @@ import PromptManager from "./promptManager";
 
 /**
  * Classe manager de l'os. Gère le lancement et l'execution des commandes.
- * @alpha 0.0.4
+ * @alpha 0.0.5
  */
 export default class MayoOSManager {
     private printer: PrinterManager = new PrinterManager();
@@ -37,6 +37,6 @@ export default class MayoOSManager {
                 this.printer.message("[cR]Identifiant ou mot de passse incorrect.[/cR]", true);
             };
         };
-        new PromptManager("home\\0\\");
+        new PromptManager(["home", "0"]);
     };
 };

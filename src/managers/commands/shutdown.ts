@@ -4,7 +4,7 @@ import PrinterManager from "../printerManager";
 export default {
     name: "shutdown",
     aliases: ["sd"],
-    exec(commandsArgs: string[], path: string): commandReturn {
+    exec(commandsArgs: string[], path: string[]): commandReturn {
         const printer = new PrinterManager();
 
         if (["-h", "--help"].includes(commandsArgs[0])) {

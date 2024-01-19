@@ -7,7 +7,7 @@ export type commands = {
     aliases: string[],
     exec(
         commandsArgs: string[],
-        path: string,
+        path: string[],
     ): commandReturn,
 };
 
@@ -16,8 +16,8 @@ export type commands = {
  */
 export type commandReturn = {
     error: boolean,
-    path: string,
+    path: string[],
     cancel: boolean
 };
 
-export type manageCommandsType = [string, string[], ((commandsArgs: string[], path: string) => commandReturn)]
+export type manageCommandsType = [string, string[], ((commandsArgs: string[], path: string[]) => commandReturn)]
