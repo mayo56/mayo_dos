@@ -11,7 +11,9 @@ export default {
         if (!commandsArgs[0]) {
             // Si vide
 
-            new PrinterManager().message("[cR]Veuillez rentrer un chemin d'accès.[/cR]", true);
+            new PrinterManager("[cR]Veuillez rentrer un chemin d'accès.[/cR]")
+                .color()
+                .send();
             return { cancel: false, path, error: false };
         } else if (commandsArgs[0] === ".") {
             // Si "."
@@ -34,7 +36,9 @@ export default {
             } else {
                 // Chemin invalide
 
-                new PrinterManager().message(`[cY]${formatPath(newPath)}[/cY] [cR]Chemin d'accès non valide.[/cR]`, true)
+                new PrinterManager(`[cY]${formatPath(newPath)}[/cY] [cR]Chemin d'accès non valide.[/cR]`)
+                    .color()
+                    .send();
                 return { cancel: false, path, error: false };
             };
         }

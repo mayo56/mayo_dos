@@ -5,10 +5,9 @@ import PromptManager from "./promptManager";
 
 /**
  * Classe manager de l'os. Gère le lancement et l'execution des commandes.
- * @alpha 0.0.5
+ * @alpha 0.0.6
  */
 export default class MayoOSManager {
-    private printer: PrinterManager = new PrinterManager();
     private users: null | UsersManager = null;
 
     constructor() {
@@ -19,8 +18,11 @@ export default class MayoOSManager {
      * Methode start, démarre les processus de démarage.
      */
     private start(): void {
-        this.printer.clear(); // efface la console
-        this.printer.message("Demarage en cours...\n", false);
+        new PrinterManager()
+            .clear() // efface la console
+        new PrinterManager("[cR]Demarage en cours...[/cR]\n")
+            .color()
+            .send();
         this.users = new UsersManager();
 
         let connected = false;
@@ -34,7 +36,9 @@ export default class MayoOSManager {
             if (response) {
                 connected = response;
             } else {
-                this.printer.message("[cR]Identifiant ou mot de passse incorrect.[/cR]", true);
+                new PrinterManager("[cR]Identifiant ou mot de passse incorrect.[/cR]")
+                    .color()
+                    .send();
             };
         };
         new PromptManager(["home", "0"]);

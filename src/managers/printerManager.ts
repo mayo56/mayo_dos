@@ -6,7 +6,9 @@ type colors = "white"
  */
 export default class PrinterManager {
 
-    private colors = require("../assets/colors.json").colors
+    private _data = require("../assets/colors.json");
+
+    constructor(private _text: string = "") {}
 
     /**
      * Methode permettant d'afficher du texte normalement ou formaté.
@@ -18,12 +20,11 @@ export default class PrinterManager {
      * >>> Bonjour !
      * ```
      */
-    public message(text:string, format: boolean = false): void {
-        if (format) text = this.format(text);
-        console.log(text);
-    }
+    public send(): void {
+        console.log(this._text);
+    };
 
-    public clear():void {
+    public clear(): void {
         console.clear();
     };
 
@@ -31,11 +32,12 @@ export default class PrinterManager {
      * Format le texte avec les couleurs
      * @param text Le texte à formater
      */
-    private format(text:string): string {
-        for (const color in this.colors) {
-            text = text.replace(new RegExp(`\\[${color}\\]`, "g"), `\x1b[${this.colors[color]}m`);
-            text = text.replace(new RegExp(`\\[\/${color}\\]`, "g"), `\x1b[0m`);
+
+    public color(): this {
+        for (const color in this._data.colors) {
+            this._text = this._text.replace(new RegExp(`\\[${color}\\]`, "g"), `\x1b[${this._data.colors[color]}m`);
+            this._text = this._text.replace(new RegExp(`\\[\/${color}\\]`, "g"), `\x1b[0m`);
         };
-        return text;
-    }
+        return this;
+    };
 };

@@ -6,7 +6,6 @@ import { readdirSync } from "node:fs";
  * Manager de commande. Il vérifiie les commandes entrée et les executes.
  */
 export default class CommandsManager {
-    private printer = new PrinterManager();
 
     private commandsList: manageCommandsType[] = [];
 
@@ -32,14 +31,18 @@ export default class CommandsManager {
 
                 // s'il y a une erreure
                 if (reply.error) {
-                    this.printer.message("[cR]Une erreure s'est produite[/cR]")
+                    new PrinterManager("[cR]Une erreure s'est produite[/cR]")
+                        .color()
+                        .send()
                     return true;
                 };
                 this.path = reply.path;
                 return reply.cancel;
             }
         }
-        this.printer.message("[cM]Cette commande n'existe pas.[/cM]", true); // message d'erreur
+        new PrinterManager("[cM]Cette commande n'existe pas.[/cM]")
+            .color()
+            .send(); // message d'erreur
         return false;
     };
 

@@ -5,10 +5,11 @@ export default {
     name: "shutdown",
     aliases: ["sd"],
     exec(commandsArgs: string[], path: string[]): commandReturn {
-        const printer = new PrinterManager();
 
         if (["-h", "--help"].includes(commandsArgs[0])) {
-            printer.message("Aide pour la commande d");
+            new PrinterManager("Aide pour la commande d")
+                .color()
+                .send();
             return {
                 "error": false,
                 "path": path,
